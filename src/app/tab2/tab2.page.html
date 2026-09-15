@@ -1,17 +1,229 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Jadwal Kuliah</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Jadwal Kuliah</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-accordion-group>
+    <!-- Senin (Monday) -->
+    <ion-accordion value="monday">
+      <ion-item slot="header" color="light">
+        <ion-label>Senin</ion-label>
+      </ion-item>
+      <div slot="content">
+        <ion-grid>
+          <!-- Matkul 1 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">Pendidikan Agama Islam (22IS)</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">09.00 - 11.00</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Filsafat</ion-col>
+          </ion-row>
+          <ion-item-divider></ion-item-divider>
+
+          <!-- Matkul 2 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">Pancasila</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">11.15 - 12.55</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Filsafat</ion-col>
+          </ion-row>
+          <ion-item-divider></ion-item-divider>
+
+          <!-- Matkul 3 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">Kewarganegaraan</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">13.00 - 14.40</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Filsafat</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+
+    <!-- Selasa (Tuesday) -->
+    <ion-accordion value="tuesday">
+      <ion-item slot="header" color="light">
+        <ion-label>Selasa</ion-label>
+      </ion-item>
+      <div slot="content">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">PGPBL-A / PGPBL-B: Praktikum Pemrograman Geospasial: Perangkat Bergerak Lanjut</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">11.00 - 13.00</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Lab. SIG (A/B)</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+
+    <!-- Rabu (Wednesday) -->
+    <ion-accordion value="wednesday">
+      <ion-item slot="header" color="light">
+        <ion-label>Rabu</ion-label>
+      </ion-item>
+      <div slot="content">
+        <ion-grid>
+          <!-- Matkul 1 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">Ide Kreatif dan Kewirausahaan</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">11.10 - 12.50</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Hall</ion-col>
+          </ion-row>
+          <ion-item-divider></ion-item-divider>
+
+          <!-- Matkul 2 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">SDGL-A / SDGL-B: Praktikum Sains Data Geospasial Lanjut</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">13.00 - 16.00</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Lab. SIG (A/B)</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+
+    <!-- Kamis (Thursday) -->
+    <ion-accordion value="thursday">
+      <ion-item slot="header" color="light">
+        <ion-label>Kamis</ion-label>
+      </ion-item>
+      <div slot="content">
+        <ion-grid>
+          <!-- Matkul 1 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">Metodologi Penelitian</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">11.10 - 12.50</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Hall</ion-col>
+          </ion-row>
+          <ion-item-divider></ion-item-divider>
+
+          <!-- Matkul 2 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">PPK-A / PPK-B: Praktikum Aplikasi SIG untuk Pemetaan Pesisir dan Kelautan</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">13.00 - 15.00</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Lab. PJ (A/B)</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+
+    <!-- Jumat (Friday) -->
+    <ion-accordion value="friday">
+      <ion-item slot="header" color="light">
+        <ion-label>Jumat</ion-label>
+      </ion-item>
+      <div slot="content">
+        <ion-grid>
+          <!-- Matkul 1 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">Bahasa Indonesia MKWKB</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">07.15 - 08.55</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">FIB</ion-col>
+          </ion-row>
+          <ion-item-divider></ion-item-divider>
+
+          <!-- Matkul 2 -->
+          <ion-row>
+            <ion-col size="4"><b>Mata Kuliah:</b></ion-col>
+            <ion-col size="8">SDA-A / SDA-B: Praktikum Aplikasi SIG untuk Sumber Daya Air</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Waktu:</b></ion-col>
+            <ion-col size="8">13.00 - 15.00</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4"><b>Ruang:</b></ion-col>
+            <ion-col size="8">Lab. PJ (A/B)</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+
+    <!-- Sabtu (Saturday) -->
+    <ion-accordion value="saturday">
+      <ion-item slot="header" color="light">
+        <ion-label>Sabtu</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-text color="medium">Tidak ada jadwal kuliah</ion-text>
+      </div>
+    </ion-accordion>
+
+    <!-- Minggu (Sunday) -->
+    <ion-accordion value="sunday">
+      <ion-item slot="header" color="light">
+        <ion-label>Minggu</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-text color="medium">Tidak ada jadwal kuliah</ion-text>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>

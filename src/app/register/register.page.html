@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="card-section">
+    <img src="assets/icon/logoiconapk.png" alt="Logo" class="register-logo" />
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Buat Akun Baru</ion-card-title>
+        <ion-card-subtitle>Isi data diri Anda di bawah ini</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            type="text"
+            label="Nama Lengkap"
+            labelPlacement="floating"
+            placeholder="Masukkan nama lengkap Anda"
+            [(ngModel)]="fullName"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            type="email"
+            label="Email"
+            labelPlacement="floating"
+            placeholder="Masukkan email Anda"
+            [(ngModel)]="email"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            type="password"
+            label="Password"
+            labelPlacement="floating"
+            placeholder="Masukkan password baru"
+            [(ngModel)]="password"
+          >
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            type="password"
+            label="Konfirmasi Password"
+            labelPlacement="floating"
+            placeholder="Ulangi password Anda"
+            [(ngModel)]="confirmPassword"
+          >
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="ion-margin-top" (click)="register()">
+          Daftar Sekarang
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" (click)="goToLogin()">
+          Sudah punya akun? Login
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

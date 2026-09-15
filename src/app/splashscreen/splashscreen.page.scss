@@ -1,0 +1,20 @@
+.splash-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+}
+
+.splash-section img {
+    width: 150px;
+    /*Sesuaikan ukuran logo sesuai desain Anda*/
+    margin-bottom: 20px;
+}
+
+.splash-section ion-spinner {
+    margin-bottom: 10px;
+}

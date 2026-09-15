@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <div class="card-section">
+    <img src="assets/icon/logoiconapk.png" alt="Logo" class="login-logo" />
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+        <ion-card-subtitle>Gunakan akun Anda untuk masuk</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input type="email" label="Email" labelPlacement="floating" placeholder="Masukkan email Anda"
+            [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" label="Password" labelPlacement="floating" placeholder="Masukkan password Anda"
+            [(ngModel)]="password">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="ion-margin-top" (click)="login()" routerLink="/tabs/tab1">
+          Login
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" (click)="goToRegister()">
+          Belum punya akun? Daftar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
