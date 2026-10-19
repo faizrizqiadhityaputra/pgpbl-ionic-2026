@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
+import { NavController, AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,56 +8,40 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
   standalone: false,
 })
-export class RegisterPage implements OnInit {
-  fullName: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+export class RegisterPage {
+  email = '';
+  password = '';
+  confirmPassword = '';
 
-  constructor(
-    private router: Router,
-    private toastCtrl: ToastController
-  ) { }
+  private navCtrl = inject(NavController);
+  private alertCtrl = inject(AlertController);
+  private authService = inject(AuthService);
 
-  ngOnInit() {
-  }
-
+  // register method
   async register() {
-    if (!this.fullName || !this.email || !this.password || !this.confirmPassword) {
-      const toast = await this.toastCtrl.create({
-        message: 'Silakan lengkapi semua data formulir!',
-        duration: 2000,
-        color: 'warning',
-        position: 'bottom'
+    if (this.password === this.confirmPassword && this.email && this.password) {
+      try {
+        await this.authService.register(this.email, this.password);
+        this.navCtrl.navigateBack('/login');
+      } catch (error: any) {
+        const alert = await this.alertCtrl.create({
+          header: 'Registration Failed',
+          message: error.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+      }
+    } else {
+      const alert = await this.alertCtrl.create({
+        header: 'Registration Failed',
+        message: 'Passwords do not match.',
+        buttons: ['OK'],
       });
-      await toast.present();
-      return;
+      await alert.present();
     }
-
-    if (this.password !== this.confirmPassword) {
-      const toast = await this.toastCtrl.create({
-        message: 'Password dan Konfirmasi Password tidak cocok!',
-        duration: 2000,
-        color: 'danger',
-        position: 'bottom'
-      });
-      await toast.present();
-      return;
-    }
-
-    const toast = await this.toastCtrl.create({
-      message: 'Pendaftaran berhasil! Silakan login.',
-      duration: 2000,
-      color: 'success',
-      position: 'bottom'
-    });
-    await toast.present();
-
-    this.router.navigateByUrl('/login');
   }
 
   goToLogin() {
-    this.router.navigateByUrl('/login');
+    this.navCtrl.navigateBack('/login');
   }
-
 }

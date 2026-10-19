@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-splashscreen',
@@ -9,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class SplashscreenPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigateByUrl('/login', { replaceUrl: true });
+      window.location.href = 'login';
     }, 2000);
   }
 

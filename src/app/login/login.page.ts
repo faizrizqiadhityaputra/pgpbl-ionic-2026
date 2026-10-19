@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
+import { NavController, AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,49 +8,32 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
   standalone: false,
 })
-export class LoginPage implements OnInit {
-  email: string = '';
-  password: string = '';
+export class LoginPage {
+  email = '';
+  password = '';
 
-  constructor(
-    private router: Router,
-    private toastCtrl: ToastController
-  ) { }
+  private navCtrl = inject(NavController);
+  private alertCtrl = inject(AlertController);
+  private authService = inject(AuthService);
 
-  ngOnInit() {
-  }
-
+  // login method
   async login() {
-    // Sementara: langsung masuk ke tab 1 tanpa perlu validasi email & password
-    this.router.navigateByUrl('/tabs/tab1');
-
-    /*
-    if (!this.email || !this.password) {
-      const toast = await this.toastCtrl.create({
-        message: 'Silakan isi email dan password terlebih dahulu!',
-        duration: 2000,
-        color: 'warning',
-        position: 'bottom'
-      });
-      await toast.present();
-      return;
+    if (this.email && this.password) {
+      try {
+        await this.authService.login(this.email, this.password);
+        this.navCtrl.navigateRoot('/tabs');
+      } catch (error: any) {
+        const alert = await this.alertCtrl.create({
+          header: 'Login Failed',
+          message: error.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+      }
     }
-
-    const toast = await this.toastCtrl.create({
-      message: 'Login berhasil! Mengalihkan...',
-      duration: 1500,
-      color: 'success',
-      position: 'bottom'
-    });
-    await toast.present();
-
-    this.router.navigateByUrl('/tabs', { replaceUrl: true });
-    */
   }
 
   goToRegister() {
-    this.router.navigateByUrl('/register');
+    this.navCtrl.navigateForward('/register');
   }
-
 }
-
