@@ -31,6 +31,20 @@ export class DataService {
     });
   }
 
+  getPoint(key: string) {
+    const pointRef = ref(database, `points/${key}`);
+    return new Promise((resolve, reject) => {
+      get(pointRef).then((snapshot) => {
+        const data = snapshot.val();
+        resolve(data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
+
+
+
   // Delete a point
   deletePoint(key: string) {
     const pointRef = ref(database, `points/${key}`);

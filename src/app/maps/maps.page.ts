@@ -62,6 +62,22 @@ export class MapsPage implements OnInit {
 
     this.markersLayer.addTo(this.map);
 
+    // 1. Tambahkan event listener untuk mendeteksi saat popup dibuka
+    this.map.on('popupopen', (e) => {
+      const popup = e.popup;
+      const deleteLink = popup.getElement()?.querySelector('.delete-link');
+
+      if (deleteLink) {
+        deleteLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          const key = (event.target as HTMLElement).dataset['key'];
+          if (key) {
+            this.deletePoint(key, popup.getLatLng());
+          }
+        });
+      }
+    });
+
     this.loadPoints();
   }
 
@@ -81,16 +97,47 @@ export class MapsPage implements OnInit {
           if (parts.length === 2) {
             const lat = parseFloat(parts[0]);
             const lng = parseFloat(parts[1]);
+
             if (!isNaN(lat) && !isNaN(lng)) {
               const marker = L.marker([lat, lng]);
-              marker.bindPopup(point.name);
-              this.markersLayer.addLayer(marker);
+
+              marker.bindPopup(`
+                <b>${point.name}</b>
+                <br>
+                <a href="#" class="delete-link" data-key="${key}">
+                  Delete
+                </a> |
+                <a href="/editpoint/${key}">Edit</a>
+              `);
+              marker.addTo(this.markersLayer);
             }
           }
-        }
+        } ``
       });
     } catch (error) {
       console.error('Error loading points:', error);
+    }
+  }
+
+  // 2. Perbaiki fungsi deletePoint (Hapus sintaks acak dan sederhanakan)
+  async deletePoint(key: string, latLng: L.LatLng | undefined) {
+    try {
+      // Hapus data dari service
+      await this.dataService.deletePoint(key);
+
+      // Tutup popup jika ada yang terbuka
+      this.map.closePopup();
+
+      if (latLng) {
+        // Cari layer (marker) pada markersLayer dan hapus marker tersebut dari peta
+        this.markersLayer.eachLayer((layer: any) => {
+          if (layer.getLatLng && layer.getLatLng().equals(latLng)) {
+            this.markersLayer.removeLayer(layer);
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error deleting point:', error);
     }
   }
 
